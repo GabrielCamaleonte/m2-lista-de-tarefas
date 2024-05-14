@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 body {
     background-color: #e2e2e2;
     font-family: 'Roboto';
@@ -59,7 +60,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    gap: 1rem;
 
 }
 
@@ -100,7 +101,7 @@ body {
 
 }
 
-.task__title {
+h2{
     font-size: x-large;
     font-weight: bold;
     margin: 20px;
@@ -113,23 +114,34 @@ body {
 .task__item {
     margin: 20px;
     display: flex;
-    height: 3rem;
     align-items: center;
-    width: 100%;
+    width: 95%;
+    justify-content: space-between;
+    background-color:#f0f0f0;
+    border-radius: 10px;
+    padding: 10px;
+    
 }
 
 .task-info__container {
     display: flex;
     z-index: 100;
-    
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .task-type.span-urgent {
-    
+    background-color:#e40404 ;
+    width: 8px;
+    height: 8px;
+    border-radius: 15px;
+    padding: 2px;
+
 }
 
 .task__button--remove-task {
-    width: 525px;
+    width: 32px;
     height: 50px;
     border-radius: 10px;
     border-color: transparent;
@@ -137,13 +149,22 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 15px;
-    position: absolute;
 }
 
 .task-type.span-important {
-
+    background-color:#f3a703 ;
+    width: 8px;
+    height: 8px;
+    border-radius: 15px;
+    padding: 2px;
+    
 }
 
 .task-type.span-normal {
+    background-color:#028302 ;
+    width: 8px;
+    height: 8px;
+    border-radius: 15px;
+    padding: 2px;
 
 }
