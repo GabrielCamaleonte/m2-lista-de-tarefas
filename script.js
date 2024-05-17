@@ -10,3 +10,68 @@ const tasks = [
   {title: "Pagar a conta de energia", type: "Urgente"},
   {title: "Assistir a um documentário interessante", type: "Normal"},
 ];
+
+function renderElements(tasks) {
+  const task_list = document.querySelector('ul')
+
+  task_list.innerHTML = ""
+  
+  for (let i = 0; i < tasks.length; i++) {
+    createTaskItem(tasks[i].title, tasks[i].type, i)
+  }
+
+}
+
+function createTaskItem(title, type, i) {
+  const task_list = document.querySelector('ul')
+
+    const task_item = document.createElement('li');    
+    const task_info = document.createElement('div');
+    const productType = document.createElement('span')
+    const productName = document.createElement('p');
+    const task_button = document.createElement('button')
+    
+
+    productName.innerText = title;
+
+
+    task_item.appendChild(task_info);
+    task_item.appendChild(task_button);
+    task_info.appendChild(productType);
+    task_info.appendChild(productName);
+    task_list.appendChild(task_item);
+
+    task_item.className = "task__item"
+    task_info.className = "task-info__container";
+    task_button.className = "task__button--remove-task";
+    productType.className = "task-type"
+    
+     if(type.toUpperCase() === "URGENTE"){
+       productType.className += ' span-urgent' 
+     }else if(type.toUpperCase() === "IMPORTANTE"){
+      productType.className += " span-important"
+     }else if(type.toUpperCase() === "NORMAL"){
+      productType.className += " span-normal"
+  }
+  task_button.addEventListener('click', function(evt){
+    evt.preventDefault()
+    tasks.splice(i, 1);
+    
+    renderElements(tasks)
+  })
+}
+console.log(renderElements(tasks))
+
+let events = document.querySelector('button')
+
+events.addEventListener('click', function(evt){
+  evt.preventDefault()
+  var title = document.getElementById('input_title');
+  var type = document.querySelector('select')
+  var obj = {title: title.value, type: type.value}
+
+  tasks.unshift(obj)
+
+  renderElements(tasks)
+
+})
