@@ -17,12 +17,12 @@ function renderElements(tasks) {
   task_list.innerHTML = ""
   
   for (let i = 0; i < tasks.length; i++) {
-    createTaskItem(tasks[i].title, tasks[i].type, i)
+    createTaskItem(tasks[i])
   }
 
 }
 
-function createTaskItem(title, type, i) {
+function createTaskItem(task) {
   const task_list = document.querySelector('ul')
 
     const task_item = document.createElement('li');    
@@ -30,10 +30,9 @@ function createTaskItem(title, type, i) {
     const productType = document.createElement('span')
     const productName = document.createElement('p');
     const task_button = document.createElement('button')
+  
+    productName.innerText = task.title;
     
-
-    productName.innerText = title;
-
 
     task_item.appendChild(task_info);
     task_item.appendChild(task_button);
@@ -46,16 +45,17 @@ function createTaskItem(title, type, i) {
     task_button.className = "task__button--remove-task";
     productType.className = "task-type"
     
-     if(type.toUpperCase() === "URGENTE"){
+     if(task.type.toUpperCase() === "URGENTE"){
        productType.className += ' span-urgent' 
-     }else if(type.toUpperCase() === "IMPORTANTE"){
+     }else if(task.type.toUpperCase() === "IMPORTANTE"){
       productType.className += " span-important"
-     }else if(type.toUpperCase() === "NORMAL"){
+     }else if(task.type.toUpperCase() === "NORMAL"){
       productType.className += " span-normal"
   }
   task_button.addEventListener('click', function(evt){
     evt.preventDefault()
-    tasks.splice(i, 1);
+    var posTask = tasks.indexOf(task)
+    tasks.splice(posTask, 1);
     
     renderElements(tasks)
   })
